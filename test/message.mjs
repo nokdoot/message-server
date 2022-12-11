@@ -3,11 +3,18 @@ import assert from 'assert';
 import app from '../src/index.mjs';
 
 describe('Message', function () {
-    after(() => {
-        process.exit(0);
-    });
-    it('send message', function () {
-        request('http://localhost:5000') // app
+
+    const requrest = request(app);
+    // const requrest = request('https://message.whichvillain.com');
+    // const requrest = request('htto://localhost:5000');
+
+    // after(() => {
+    //     process.exit(0);
+    // });
+
+    it('send message', async () => {
+        // request('https://message.whichvillain.com') // app
+        await requrest // app
             .post('/')
             .set('Content-Type', 'plain/text')
             .send(
@@ -24,9 +31,6 @@ d
 asd
 `
             )
-            .expect(200)
-            .end(function(err, res) {
-                if (err) throw err;
-            });
+            .expect(200);
     });
 });
