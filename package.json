@@ -1,27 +1,27 @@
 {
-  "name": "message-to-me",
+  "name": "message-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "module": "type",
   "scripts": {
     "pack": "mkdir -p dist && cp -r src dockerfile docker-compose.yml package.json package-lock.json .env dist/",
-    "dev": "docker build -t message-to-me . && docker compose --env-file .env config && docker compose up",
-    "deploy": "npm run pack && rsync -av dist/ rasp:message-to-me && ssh rasp 'cd message-to-me; docker build -t message-to-me .; docker compose --env-file .env config; docker compose up -d;'",
+    "dev": "docker build -t message-server . && docker compose --env-file .env config && docker compose up",
+    "deploy": "npm run pack && rsync -av dist/ rasp:message-server && ssh rasp 'cd message-server; docker build -t message-server .; docker compose --env-file .env config; docker compose up -d;'",
     "start": "node src/index.mjs",
     "test": "mocha -r dotenv/config"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nokdoot/message-to-me.git"
+    "url": "git+https://github.com/nokdoot/message-server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nokdoot/message-to-me/issues"
+    "url": "https://github.com/nokdoot/message-server/issues"
   },
-  "homepage": "https://github.com/nokdoot/message-to-me#readme",
+  "homepage": "https://github.com/nokdoot/message-server#readme",
   "dependencies": {
     "env-var": "^7.3.0",
     "express": "^4.18.2",

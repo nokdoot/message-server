@@ -1,8 +1,8 @@
 version: '0.1'
 services:
-  message-to-me:
-    image: message-to-me
-    container_name: message-to-me
+  message-server:
+    image: message-server
+    container_name: message-server
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
       CHAT_IDS: ${CHAT_IDS}
@@ -10,7 +10,7 @@ services:
     ports:
       - "${HOST_PORT}:${PORT}"
     networks:
-      - message-to-me
+      - message-server
     command: npm start
 networks:
-  message-to-me:
+  message-server:

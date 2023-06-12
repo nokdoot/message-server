@@ -19,7 +19,7 @@ app.post('/', (req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`message-to-me server started: ${PORT}`);
+    console.log(`message-server server started: ${PORT}`);
 });
 
 export default app;
