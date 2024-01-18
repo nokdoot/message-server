@@ -2,14 +2,9 @@
   "name": "message-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "module": "type",
+  "type": "module",
   "scripts": {
-    "pack": "rm -rf dist && mkdir -p dist && cp -r src dockerfile docker-compose.yml package.json package-lock.json .env dist/",
-    "dev": "docker build -t message-server . && docker compose --env-file .env config && docker compose up",
-    "deploy": "npm run pack && rsync -av dist/ rasp-priv:message-server && ssh rasp-priv 'cd message-server; docker build -t message-server .; docker compose --env-file .env config; docker compose up -d;'",
-    "start": "node src/index.mjs",
-    "test": "mocha -r dotenv/config"
+    "dev": "node --env-file .env src/index.mjs"
   },
   "repository": {
     "type": "git",
@@ -23,13 +18,19 @@
   },
   "homepage": "https://github.com/nokdoot/message-server#readme",
   "dependencies": {
+    "ajv": "^8.12.0",
     "env-var": "^7.3.0",
     "express": "^4.18.2",
+    "joi": "^17.11.0",
     "node-telegram-bot-api": "^0.60.0"
   },
   "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^4.17.21",
+    "@types/node-telegram-bot-api": "^0.64.2",
     "dotenv": "^16.0.3",
     "mocha": "^10.1.0",
-    "supertest": "^6.3.2"
+    "supertest": "^6.3.2",
+    "ts-node": "^10.9.2"
   }
 }

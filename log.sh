@@ -1,0 +1,1 @@
+docker logs --tail 15 -f message-server
