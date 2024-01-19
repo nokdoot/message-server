@@ -1,4 +1,4 @@
-const baseurl = "http://localhost:5000";
+const baseurl = "http://192.168.0.15:5000";
 
 /**
  * @typedef { object } BodySchema
