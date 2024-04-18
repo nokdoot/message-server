@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 
-docker build -t message-server .
+# --progress=plain
+docker build -t message-server:latest  .

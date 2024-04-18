@@ -1,20 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import j from "joi";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
-/**
- * @typedef { Object } Price
- * @property { string } symbol
- * @property { number } price
- */
-
-/**
- * @param { Price[] } prices
- */
-export const template = (prices) => {
+export const template = (prices: { symbol: string; price: number }[]) => {
     const { error, value } = j
         .array()
         .items(

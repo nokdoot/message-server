@@ -3,9 +3,10 @@ WORKDIR /app
 
 RUN corepack enable
 
-COPY package.json package.json
-RUN pnpm install --fix-lockfile
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
-COPY src src
+COPY tsconfig.json src ./
+RUN pnpm build
 
-CMD node src/index.mjs
+CMD node dist/index.js

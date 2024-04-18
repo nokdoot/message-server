@@ -7,10 +7,7 @@ const CHAT_IDS = env.get("CHAT_IDS").required().asArray();
 
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
 
-/**
- * @param {string} htmlContent
- */
-export const sendFormatHtml = (htmlContent) => {
+export const sendFormatHtml = (htmlContent: string) => {
     for (let chatId of CHAT_IDS) {
         bot.sendMessage(chatId, htmlContent, {
             parse_mode: "HTML",
@@ -18,10 +15,7 @@ export const sendFormatHtml = (htmlContent) => {
     }
 };
 
-/**
- * @param {string} content
- */
-export const sendText = (content) => {
+export const sendText = (content: string) => {
     for (let chatId of CHAT_IDS) {
         bot.sendMessage(chatId, content).catch(console.log);
     }

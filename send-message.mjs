@@ -1,4 +1,5 @@
-const baseurl = "http://192.168.0.15:5000";
+// const baseurl = "http://192.168.0.15:5000";
+const baseurl = 'http://localhost:5000';
 
 /**
  * @typedef { object } BodySchema
@@ -7,7 +8,7 @@ const baseurl = "http://192.168.0.15:5000";
  * @property {{ price: number, symbol: string }[]} prices
  */
 
-await fetch(`${baseurl}/price`, {
+const response = await fetch(`${baseurl}/price?publisher=1`, {
     method: "post",
     headers: {
         "Content-Type": "application/json",
@@ -27,3 +28,5 @@ await fetch(`${baseurl}/price`, {
         ],
     }),
 });
+
+console.log(response);

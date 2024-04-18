@@ -1,15 +1,9 @@
 import j from "joi";
-import { template } from "./template.mjs";
-import { sendFormatHtml } from "../telegram-message.mjs";
+import { template } from "./template.js";
+import { sendFormatHtml } from "../telegram-message.js";
+import { NextFunction, Request, Response } from "express";
 
-/**
- *
- * @param {import('express').Request} req
- * @param {import('express').Response} res
- * @param {import('express').NextFunction} next
- * @returns
- */
-export const price = async (req, res, next) => {
+export const price = async (req: Request, res: Response, next: NextFunction) => {
     /**
      * @typedef { object } BodySchema
      * @property {string} uniqueKey
@@ -19,7 +13,7 @@ export const price = async (req, res, next) => {
     const { error, value } = j
         .object({
             uniqueKey: j.string(),
-            from: j.string().valid("binance"),
+            from: j.string().valid("binance", "klaytn"),
             prices: j.array().items(
                 j
                     .object({
