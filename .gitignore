@@ -3,6 +3,7 @@ node_modules
 dist
 
 # python3
+__pycache__
 .venv
 
 # telegram

@@ -7,7 +7,7 @@ async def hello(request: web.Request):
     return web.Response(text="success")
 
 async def text(request: web.Request):
-    await send_message(await request.json())
+    await send_message(await request.text())
     return web.Response(text="success")
 
 async def price(request: web.Request):
