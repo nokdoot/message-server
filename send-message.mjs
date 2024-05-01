@@ -1,5 +1,5 @@
-// const baseurl = "http://192.168.0.15:5000";
-const baseurl = 'http://localhost:5000';
+const baseurl = "http://192.168.0.15:7322";
+// const baseurl = 'http://localhost:7322';
 
 /**
  * @typedef { object } BodySchema
@@ -15,7 +15,7 @@ const response = await fetch(`${baseurl}/price?publisher=1`, {
     },
     body: JSON.stringify({
         uniqueKey: "someKey",
-        from: "binance",
+        from_: "binance",
         prices: [
             {
                 symbol: "BTC",

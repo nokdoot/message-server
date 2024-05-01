@@ -4,6 +4,7 @@
     "description": "",
     "type": "module",
     "scripts": {
+        "telegram": "node --loader ts-node/esm ./src/telegram/index.ts",
         "dev": "./build.sh && ./run.sh",
         "build": "rm -rf dist && tsc --build ."
     },

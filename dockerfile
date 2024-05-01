@@ -1,12 +1,14 @@
-FROM node:20-alpine
+FROM python:3
 WORKDIR /app
 
-RUN corepack enable
+RUN python -m venv ./.venv
+ENV PATH="/app/.venv/bin:$PATH"
+RUN python -m pip install --upgrade pip
 
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
 
-COPY tsconfig.json src ./
-RUN pnpm build
+RUN pip install pipreqs
+COPY ./*.py ./
+RUN pipreqs --ignore .venv/
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD node dist/index.js
+CMD [ "python", "./server.py" ]

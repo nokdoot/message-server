@@ -18,4 +18,4 @@ docker stop message-server || true
 docker rm message-server || true
 
 # Run the new container
-docker run -it --env-file .env --name message-server --restart always -p 5000:3000 -d message-server:latest
+docker run -it --env-file .env --name message-server --restart always -p 7322:7322 -d message-server:latest

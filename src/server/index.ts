@@ -14,7 +14,7 @@ declare global {
 
 const app = express();
 
-app.use(publisher);
+app.use(publisher); // 1
 app.use(express.text({ type: "plain/text" }));
 app.use(express.json());
 
@@ -22,8 +22,8 @@ app.get("/", (req, res, next) => {
     return res.send("message server");
 });
 
-app.post("/", text);
-app.post("/price", price);
+app.post("/", text); // 2
+app.post("/price", price); // 3
 
 
 export default app;
